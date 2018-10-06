@@ -14,10 +14,10 @@ import torch.utils.data as data
 from torch.autograd import Variable
 
 from data import VOCroot, COCOroot, VOC_300, VOC_512, COCO_300, COCO_512, COCO_mobile_300, AnnotationTransform, \
-    COCODetection, VOCDetection, detection_collate, BaseTransform, preproc
+     VOCDetection, detection_collate, BaseTransform, preproc
 from layers.functions import Detect, PriorBox
 from layers.modules import MultiBoxLoss
-from utils.nms_wrapper import nms
+# from utils.nms_wrapper import nms
 from utils.timer import Timer
 
 
@@ -27,32 +27,33 @@ def str2bool(v):
 
 parser = argparse.ArgumentParser(
     description='Receptive Field Block Net Training')
-parser.add_argument('-v', '--version', default='SSD_vgg',
+parser.add_argument('-v', '--version', default='RFB_vgg',
                     help='RFB_vgg ,RFB_E_vgg RFB_mobile SSD_vgg version.')
-parser.add_argument('-s', '--size', default='512',
+#SSD_vgg error one of the variables needed for gradient computation has been modified by an inplace operation
+parser.add_argument('-s', '--size', default='300',
                     help='300 or 512 input size.')
-parser.add_argument('-d', '--dataset', default='COCO',
+parser.add_argument('-d', '--dataset', default='VOC',
                     help='VOC or COCO dataset')
 parser.add_argument(
     '--basenet', default='weights/vgg16_reducedfc.pth', help='pretrained base model')
 parser.add_argument('--jaccard_threshold', default=0.5,
                     type=float, help='Min Jaccard index for matching')
-parser.add_argument('-b', '--batch_size', default=8,
+parser.add_argument('-b', '--batch_size', default=32,
                     type=int, help='Batch size for training')
-parser.add_argument('--num_workers', default=4,
+parser.add_argument('--num_workers', default=0,
                     type=int, help='Number of workers used in dataloading')
 parser.add_argument('--cuda', default=True,
                     type=bool, help='Use cuda to train model')
 parser.add_argument('--ngpu', default=2, type=int, help='gpus')
 parser.add_argument('--lr', '--learning-rate',
-                    default=4e-3, type=float, help='initial learning rate')
+                    default=4e-2, type=float, help='initial learning rate')
 parser.add_argument('--momentum', default=0.9, type=float, help='momentum')
 
 parser.add_argument('--resume_net', default=False, help='resume net for retraining')
 parser.add_argument('--resume_epoch', default=0,
                     type=int, help='resume iter for retraining')
 
-parser.add_argument('-max', '--max_epoch', default=300,
+parser.add_argument('-max', '--max_epoch', default=1000,
                     type=int, help='max epoch for retraining')
 parser.add_argument('--weight_decay', default=5e-4,
                     type=float, help='Weight decay for SGD')
@@ -83,7 +84,7 @@ if not os.path.exists(test_save_dir):
 
 log_file_path = save_folder + '/train' + time.strftime('_%Y-%m-%d-%H-%M', time.localtime(time.time())) + '.log'
 if args.dataset == 'VOC':
-    train_sets = [('2007', 'trainval'), ('2012', 'trainval')]
+    train_sets = [('2007', 'trainval')]#, ('2012', 'trainval')]
     cfg = (VOC_300, VOC_512)[args.size == '512']
 else:
     train_sets = [('2017', 'train')]
@@ -126,9 +127,9 @@ if args.visdom:
 net = build_net(img_dim, num_classes)
 print(net)
 if not args.resume_net:
-    base_weights = torch.load(args.basenet)
+    # base_weights = torch.load(args.basenet)
     print('Loading base network...')
-    net.base.load_state_dict(base_weights)
+    # net.base.load_state_dict(base_weights)
 
 
     def xavier(param):
@@ -202,11 +203,11 @@ if args.dataset == 'VOC':
         VOCroot, [('2007', 'test')], None, AnnotationTransform())
     train_dataset = VOCDetection(VOCroot, train_sets, preproc(
         img_dim, rgb_means, rgb_std, p), AnnotationTransform())
-elif args.dataset == 'COCO':
-    testset = COCODetection(
-        COCOroot, [('2017', 'val')], None)
-    train_dataset = COCODetection(COCOroot, train_sets, preproc(
-        img_dim, rgb_means, rgb_std, p))
+# elif args.dataset == 'COCO':
+#     testset = COCODetection(
+#         COCOroot, [('2017', 'val')], None)
+#     train_dataset = COCODetection(COCOroot, train_sets, preproc(
+#         img_dim, rgb_means, rgb_std, p))
 else:
     print('Only VOC and COCO are supported now!')
     exit()
@@ -225,6 +226,7 @@ def train():
     stepvalues_COCO = (90 * epoch_size, 120 * epoch_size, 140 * epoch_size)
     stepvalues = (stepvalues_VOC, stepvalues_COCO)[args.dataset == 'COCO']
     print('Training', args.version, 'on', train_dataset.name)
+
     step_index = 0
 
     if args.visdom:
@@ -320,23 +322,22 @@ def train():
         loss_l, loss_c = criterion(out, priors, targets)
         # odm branch loss
 
-        mean_loss_c += loss_c.data[0]
-        mean_loss_l += loss_l.data[0]
+        mean_loss_c += loss_c.item()
+        mean_loss_l += loss_l.item()
 
         loss = loss_l + loss_c
         loss.backward()
         optimizer.step()
         load_t1 = time.time()
         if iteration % 10 == 0:
-            print('Epoch:' + repr(epoch) + ' || epochiter: ' + repr(iteration % epoch_size) + '/' + repr(epoch_size)
-                  + '|| Totel iter ' +
-                  repr(iteration) + ' || L: %.4f C: %.4f||' % (
+            print('Epoch:' + repr(epoch) + ' batch: ' + repr(iteration % epoch_size) + '/' + repr(epoch_size)
+                   + ' loss-L: %.4f loss-C: %.4f||' % (
                       mean_loss_l / 10, mean_loss_c / 10) +
-                  'Batch time: %.4f sec. ||' % (load_t1 - load_t0) + 'LR: %.8f' % (lr))
+                  'Batch time: %.4f ' % (load_t1 - load_t0) + 'LR: %.5f' % (lr))
             log_file.write(
-                'Epoch:' + repr(epoch) + ' || epochiter: ' + repr(iteration % epoch_size) + '/' + repr(epoch_size)
-                + '|| Totel iter ' +
-                repr(iteration) + ' || L: %.4f C: %.4f||' % (
+                'Epoch:' + repr(epoch) + ' epochiter: ' + repr(iteration % epoch_size) + '/' + repr(epoch_size)
+                + ' Totel iter ' +
+                repr(iteration) + ' Loss %.4f C: %.4f||' % (
                     mean_loss_l / 10, mean_loss_c / 10) +
                 'Batch time: %.4f sec. ||' % (load_t1 - load_t0) + 'LR: %.8f' % (lr) + '\n')
 
@@ -419,7 +420,7 @@ def test_net(save_folder, net, detector, cuda, testset, transform, max_per_image
             else:
                 cpu = False
 
-            keep = nms(c_dets, 0.45, force_cpu=cpu)
+            # keep = nms(c_dets, 0.45, force_cpu=cpu)
             keep = keep[:50]
             c_dets = c_dets[keep, :]
             all_boxes[j][i] = c_dets
