@@ -17,9 +17,108 @@ from data import VOCroot, COCOroot, VOC_300, VOC_512, COCO_300, COCO_512, COCO_m
      VOCDetection, detection_collate, BaseTransform, preproc
 from layers.functions import Detect, PriorBox
 from layers.modules import MultiBoxLoss
-# from utils.nms_wrapper import nms
+# from utils.nms_wrapper import cpu_soft_nms
+# from utils.nms.cpu_nms import cpu_soft_nms
 from utils.timer import Timer
 
+def area_of(left_top, right_bottom) -> torch.Tensor:
+    """Compute the areas of rectangles given two corners.
+    Args:
+        left_top (N, 2): left top corner.
+        right_bottom (N, 2): right bottom corner.
+    Returns:
+        area (N): return the area.
+    """
+    hw = torch.clamp(right_bottom - left_top, min=0.0)
+    return hw[..., 0] * hw[..., 1]
+
+def iou_of(boxes0, boxes1, eps=1e-5):
+    """Return intersection-over-union (Jaccard index) of boxes.
+    Args:
+        boxes0 (N, 4): ground truth boxes.
+        boxes1 (N or 1, 4): predicted boxes.
+        eps: a small number to avoid 0 as denominator.
+    Returns:
+        iou (N): IoU values.
+    """
+    overlap_left_top = torch.max(boxes0[..., :2], boxes1[..., :2])
+    overlap_right_bottom = torch.min(boxes0[..., 2:], boxes1[..., 2:])
+
+    overlap_area = area_of(overlap_left_top, overlap_right_bottom)
+    area0 = area_of(boxes0[..., :2], boxes0[..., 2:])
+    area1 = area_of(boxes1[..., :2], boxes1[..., 2:])
+    return overlap_area / (area0 + area1 - overlap_area + eps)
+
+def compute_iou(box, boxes, box_area, boxes_area):
+    """Calculates IoU of the given box with the array of the given boxes.
+    box: 1D vector [x1, y1, x2, y2]
+    boxes: [boxes_count, (x1, y1, x2, y2)]
+    box_area: float. the area of 'box'
+    boxes_area: array of length boxes_count.
+    Note: the areas are passed in rather than calculated here for
+          efficency. Calculate once in the caller to avoid duplicate work.
+    """
+    # Calculate intersection areas
+    # y1 = torch.max(box[1], boxes[:, 1])
+    # y2 = torch.min(box[3], boxes[:, 3])
+    # x1 = torch.max(box[0], boxes[:, 0])
+    # x2 = torch.min(box[2], boxes[:, 2])
+
+    y1 =torch.max(torch.from_numpy(box)[1], torch.from_numpy(boxes[:, 1])).cuda()
+    y2 =torch.max(torch.from_numpy(box)[3], torch.from_numpy(boxes[:, 3])).cuda()
+    x1 =torch.max(torch.from_numpy(box)[0], torch.from_numpy(boxes[:, 0])).cuda()
+    x2 =torch.max(torch.from_numpy(box)[2], torch.from_numpy(boxes[:, 2])).cuda()
+
+    zero=torch.zeros(len(x2-x1)).cuda()
+    intersection = torch.max(x2 - x1, zero) * torch.max(y2 - y1, zero)
+    union = box_area + boxes_area[:] - intersection[:]
+    iou = intersection.cuda() / union.cuda()
+    return iou
+
+def soft_nms(boxes, scores, sigma=0.5, Nt=0.5, threshold=0.001, method=2):
+    """Performs soft non-maximum supression and returns indicies of kept boxes.
+    boxes: [N, (xc, yc, w, h)].
+    scores: 1-D array of box scores. All elements of scores should >= 0
+    threshold: Float. IoU threshold to use for filtering.
+    """
+    assert boxes.shape[0] > 0
+    area = boxes[:, 2] * boxes[:, 3]
+    # transfer to x1y1x2y2 format
+    # boxes[:, 0] -= boxes[:, 2] / 2
+    # boxes[:, 1] -= boxes[:, 3] / 2
+    # boxes[:, 2] += boxes[:, 0]
+    # boxes[:, 3] += boxes[:, 1]
+
+    pick = []
+
+    score_idx = np.arange(len(scores))
+
+    while np.any(np.array(scores != -1)):
+        # Get indicies of boxes sorted by scores (highest first)
+        max_idx = scores.argmax()
+        pick.append(max_idx)
+        scores[max_idx] = -1
+
+        # Compute IoU of the picked box with the rest
+        if len(score_idx) <=1:
+            break
+        if len(score_idx != max_idx)>len(score_idx):
+            print("this need end")
+            break
+        score_idx = score_idx[score_idx != max_idx]
+        iou = compute_iou(boxes[max_idx], boxes[score_idx], area[max_idx], area[score_idx])
+        if method == 1:  # linear
+            weight = np.where(iou > Nt, 1 - iou, 1)
+        elif method == 2:  # gaussian
+            weight = torch.exp(-(iou) / sigma)
+        else:  # original NMS
+            weight = torch.where(iou > Nt, 0, 1)
+
+        scores[score_idx] *= weight
+
+        scores[score_idx[scores[score_idx] < threshold]] = -1
+        score_idx = np.delete(score_idx, np.where(scores[score_idx] < threshold)[0])
+    return torch.tensor(pick, dtype=torch.long)
 
 def str2bool(v):
     return v.lower() in ("yes", "true", "t", "1")
@@ -38,7 +137,7 @@ parser.add_argument(
     '--basenet', default='weights/vgg16_reducedfc.pth', help='pretrained base model')
 parser.add_argument('--jaccard_threshold', default=0.5,
                     type=float, help='Min Jaccard index for matching')
-parser.add_argument('-b', '--batch_size', default=32,
+parser.add_argument('-b', '--batch_size', default=64,
                     type=int, help='Batch size for training')
 parser.add_argument('--num_workers', default=0,
                     type=int, help='Number of workers used in dataloading')
@@ -420,7 +519,8 @@ def test_net(save_folder, net, detector, cuda, testset, transform, max_per_image
             else:
                 cpu = False
 
-            # keep = nms(c_dets, 0.45, force_cpu=cpu)
+            keep = soft_nms(c_bboxes,c_scores, 0.45)
+            # keep = soft_nms(c_dets, 0.45, force_cpu=cpu)
             keep = keep[:50]
             c_dets = c_dets[keep, :]
             all_boxes[j][i] = c_dets

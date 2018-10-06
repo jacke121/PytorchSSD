@@ -2,65 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0f5bd01-c5ed-4745-9707-dc271c5b14d4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/coco_voc.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/coco.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/config.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/data_augment.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/scripts/VOC2007.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/scripts/VOC2012.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/voc0712.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/voc_eval.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/demo/live.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/RFB.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/functions/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/functions/detection.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/functions/prior_box.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/modules/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/modules/l2norm.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/modules/multibox_loss.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/layers/modules/refine_multibox_loss.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/make.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/FRFBSSD_vgg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/FSSD_mobile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/FSSD_vgg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/RFB_Net_E_vgg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/RFB_Net_mobile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/RFB_Net_vgg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/RefineSSD_vgg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/SSD_vgg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/base_models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/mobilenet.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/refinedet_train_test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resume_from_coco.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/train_test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/train_test_fssd_mobile_pre.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/box_utils.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/build.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/cpu_nms.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/cpu_nms.pyx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/gpu_nms.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/gpu_nms.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/gpu_nms.pyx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/nms_kernel.cu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms/py_cpu_nms.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/nms_wrapper.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/_mask.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/_mask.pyx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/coco.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/cocoeval.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/mask.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/maskApi.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/pycocotools/maskApi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/utils/timer.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PytorchSSD.iml" afterPath="$PROJECT_DIR$/.idea/PytorchSSD.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layers/modules/multibox_loss.py" afterPath="$PROJECT_DIR$/layers/modules/multibox_loss.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train_test.py" afterPath="$PROJECT_DIR$/train_test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,18 +15,28 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PytorchSSD$train_test.coverage" NAME="train_test Coverage Results" MODIFIED="1538793300083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PytorchSSD$train_test.coverage" NAME="train_test Coverage Results" MODIFIED="1538812610507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="train_test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="46" column="39" lean-forward="false" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+            <state relative-caret-position="337">
+              <caret line="170" column="50" lean-forward="false" selection-start-line="170" selection-start-column="50" selection-end-line="170" selection-end-column="50" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="voc0712.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/voc0712.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-96">
+              <caret line="158" column="8" lean-forward="false" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,8 +64,8 @@
       <file leaf-file-name="multibox_loss.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/modules/multibox_loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+            <state relative-caret-position="140">
+              <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -136,45 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nms_wrapper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/nms_wrapper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#249#295#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="coco.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/pycocotools/coco.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="242" column="20" lean-forward="false" selection-start-line="242" selection-start-column="17" selection-end-line="242" selection-end-column="20" />
-              <folding>
-                <element signature="e#2404#2415#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -187,7 +108,6 @@
       <find>train_sets</find>
       <find>plt</find>
       <find>COCODetection</find>
-      <find>nms</find>
       <find>SSD_vgg</find>
       <find>train_test</find>
       <find>num_workers</find>
@@ -197,6 +117,15 @@
       <find>rate</find>
       <find>date</find>
       <find>ngpu</find>
+      <find>dataset</find>
+      <find>nms</find>
+      <find>test_frequency</find>
+      <find>c_bboxes</find>
+      <find>compute_iou</find>
+      <find>soft_nms</find>
+      <find>im_detect</find>
+      <find>test_net</find>
+      <find>testset</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,8 +136,9 @@
       <list>
         <option value="$PROJECT_DIR$/data/config.py" />
         <option value="$PROJECT_DIR$/data/__init__.py" />
-        <option value="$PROJECT_DIR$/layers/modules/multibox_loss.py" />
         <option value="$PROJECT_DIR$/models/SSD_vgg.py" />
+        <option value="$PROJECT_DIR$/utils/nms_wrapper.py" />
+        <option value="$PROJECT_DIR$/layers/modules/multibox_loss.py" />
         <option value="$PROJECT_DIR$/train_test.py" />
       </list>
     </option>
@@ -293,6 +223,12 @@
               <item name="PytorchSSD" type="b2602c69:ProjectViewProjectNode" />
               <item name="PytorchSSD" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="nms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PytorchSSD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PytorchSSD" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
               <item name="pycocotools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -309,6 +245,13 @@
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
               <item name="&lt; Python 3.6.3 (D:\ProgramData\Miniconda3\python.exe) &gt;" type="70bed36:NamedLibraryElementNode" />
               <item name="Miniconda3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PytorchSSD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6.3 (D:\ProgramData\Miniconda3\python.exe) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="Miniconda3" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PytorchSSD" type="b2602c69:ProjectViewProjectNode" />
@@ -336,23 +279,6 @@
               <item name="site-packages" type="462c0819:PsiDirectoryNode" />
               <item name="torch" type="462c0819:PsiDirectoryNode" />
               <item name="autograd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PytorchSSD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6.3 (D:\ProgramData\Miniconda3\python.exe) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="torch" type="462c0819:PsiDirectoryNode" />
-              <item name="nn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PytorchSSD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6.3 (D:\ProgramData\Miniconda3\python.exe) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="torch" type="462c0819:PsiDirectoryNode" />
-              <item name="nn" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -418,14 +344,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32512316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3136289" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09736457" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19692533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -451,39 +378,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/train_test.py</url>
-          <line>423</line>
+          <line>523</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/train_test.py</url>
-          <line>321</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/layers/modules/multibox_loss.py</url>
-          <line>113</line>
-          <option name="timeStamp" value="11" />
+          <line>108</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/train_test.py</url>
-          <line>324</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/layers/modules/multibox_loss.py</url>
-          <line>114</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/train_test.py</url>
-          <line>328</line>
-          <option name="timeStamp" value="14" />
+          <line>72</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="loss_l.backward()" language="Python" />
+        <watch expression="torch.max(torch.from_numpy(box)[1], torch.from_numpy(boxes[:, 1]))" language="Python" />
+        <watch expression="torch.from_numpy(box)[1]" language="Python" />
+        <watch expression="box[1]" language="Python" />
+        <watch expression="torch.max((x2 - x1), torch.zeros(len(x2-x1)))" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -500,14 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/voc0712.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="158" column="24" lean-forward="false" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -538,44 +445,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/nms_wrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#249#295#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/FRFBSSD_vgg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="60" column="13" lean-forward="false" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/modules/multibox_loss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ProgramData/Miniconda3/Lib/site-packages/torch/nn/modules/module.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="496" column="0" lean-forward="false" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Miniconda3/Lib/site-packages/torch/autograd/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -596,10 +469,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils/nms/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/nms/cpu_nms.pyx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2264">
+          <caret line="157" column="37" lean-forward="true" selection-start-line="157" selection-start-column="37" selection-end-line="157" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/nms_wrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding>
+            <element signature="e#249#295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/FRFBSSD_vgg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="60" column="13" lean-forward="false" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/modules/multibox_loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Miniconda3/Lib/site-packages/torch/autograd/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/voc0712.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-96">
+          <caret line="158" column="8" lean-forward="false" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="46" column="39" lean-forward="false" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+        <state relative-caret-position="337">
+          <caret line="170" column="50" lean-forward="false" selection-start-line="170" selection-start-column="50" selection-end-line="170" selection-end-column="50" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

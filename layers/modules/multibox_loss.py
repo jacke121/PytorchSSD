@@ -111,6 +111,6 @@ class MultiBoxLoss(nn.Module):
         # Sum of losses: L(x,c,l,g) = (Lconf(x, c) + αLloc(x,l,g)) / N
 
         N = num_pos.sum().type(torch.cuda.FloatTensor)
-        loss_l =loss_l/ N
-        loss_c=loss_c/ N
+        loss_l =loss_l*10/ N
+        loss_c=loss_c*10/ N
         return loss_l,loss_c
