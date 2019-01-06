@@ -4,7 +4,7 @@
 import cv2
 cv2.setNumThreads(0)  # pytorch issue 1355: possible deadlock in dataloader
 # note: if you used our download scripts, this should be right
-VOCroot = r'D:\dataset\VOCtrainval_06-Nov-2007/VOCdevkit'  # path to VOCdevkit root dir
+VOCroot = r'E:\data_net\VOCtrainval_06-Nov-2007/VOCdevkit'  # path to VOCdevkit root dir
 COCOroot = '/home/user/Database/MSCOCO2017'
 
 # RFB CONFIGS

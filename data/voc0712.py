@@ -166,6 +166,7 @@ class VOCDetection(data.Dataset):
         self._annopath = os.path.join('%s', 'Annotations', '%s.xml')
         self._imgpath = os.path.join('%s', 'JPEGImages', '%s.jpg')
         self.ids = list()
+        self.img_d={}
         for (year, name) in image_sets:
             self._year = year
             rootpath = os.path.join(self.root, 'VOC' + year)
@@ -174,21 +175,24 @@ class VOCDetection(data.Dataset):
 
     def __getitem__(self, index):
         img_id = self.ids[index]
-        target = ET.parse(self._annopath % img_id).getroot()
-        img = cv2.imread(self._imgpath % img_id, cv2.IMREAD_COLOR)
-        height, width, _ = img.shape
+        if img_id in self.img_d:
+            return self.img_d[img_id]
+        else:
+            target = ET.parse(self._annopath % img_id).getroot()
+            img = cv2.imread(self._imgpath % img_id, cv2.IMREAD_COLOR)
+            height, width, _ = img.shape
 
-        if self.target_transform is not None:
-            target = self.target_transform(target)
+            if self.target_transform is not None:
+                target = self.target_transform(target)
 
-        if self.preproc is not None:
-            img, target = self.preproc(img, target)
-            # print(img.size())
+            if self.preproc is not None:
+                img, target = self.preproc(img, target)
+                # print(img.size())
 
-            # target = self.target_transform(target, width, height)
-        # print(target.shape)
-
-        return img, target
+                # target = self.target_transform(target, width, height)
+            # print(target.shape)
+            self.img_d[img_id]=img, target
+            return img, target
 
     def __len__(self):
         return len(self.ids)

@@ -13,6 +13,9 @@ import os
 
 def parse_rec(filename):
     """ Parse a PASCAL VOC xml file """
+    if not os.path.exists(filename):
+        print("file not exit",filename)
+        return None
     tree = ET.parse(filename)
     objects = []
     for obj in tree.findall('object'):

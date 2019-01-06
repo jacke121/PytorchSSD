@@ -335,7 +335,7 @@ mbox = {
 }
 
 
-def build_net(size=300, num_classes=21):
+def build_net(size=300, num_classes=1):
     if size != 300:
         print("Error: Sorry only RFB300_mobile is supported!")
         return
